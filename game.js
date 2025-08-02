@@ -6,6 +6,7 @@ var userClickedPattern = [];
 let level = 1;
 let gameison = false;
 let gameActive = true;
+const wrongSound = new Audio("./sounds/wrong.mp3");
 //gamepattern.push(buttoncolor[nextSq()]);
 
 $('[type="button"]').on("click", function () {
@@ -60,7 +61,7 @@ async function nextLevel() {
 
 function gameover() {
   gameActive = false;
-  playsound("wrong");
+  wrongSound.play();
   $("body").addClass("game-over");
   setTimeout(() => $("body").removeClass("game-over"), 200);
   $("#level-title").text("Game Over, Press Space to Restart");
