@@ -42,7 +42,10 @@ $(document).on("keydown", function (e) {
 });
 
 $(document).on("touchstart", function () {
-  startGame();
+  setTimeout(()=>{
+    startGame();  
+  },1000);
+  
 });
 
 // $(document).on("keydown", function (e) {
@@ -85,9 +88,12 @@ function gameover() {
   gameActive = false;
   wrongSound.play();
   $("body").addClass("game-over");
-  setTimeout(() => $("body").removeClass("game-over"), 200);
   $("#level-title").text("Game Over, Press Space to Restart");
-  location.reload();
+  setTimeout(() => $("body").removeClass("game-over"), 1000);
+  setTimeout(()=>{
+  location.reload();  
+  },1500);
+  
 }
 
 function nextButton() {
