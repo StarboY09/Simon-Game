@@ -23,9 +23,8 @@ function nextSq() {
   return Math.floor(Math.random() * 4);
 }
 
-$(document).on("keydown", function (e) {
-  if ((e.key === " " || e.keyCode === 32) && !gameison) {
-    e.preventDefault();
+function startGame() {
+  if (!gameison) {
     $("#level-title").text(`Level ${level}`);
     var color = buttoncolor[nextSq()];
     gamepattern.push(color);
@@ -33,7 +32,30 @@ $(document).on("keydown", function (e) {
     gameison = true;
     //nextLevel();
   }
+}
+
+$(document).on("keydown", function (e) {
+  if (e.key === " " || e.keyCode === 32) {
+    e.preventDefault();
+    startGame();
+  }
 });
+
+$(document).on("touchstart", function () {
+  startGame();
+});
+
+// $(document).on("keydown", function (e) {
+//   if ((e.key === " " || e.keyCode === 32 || e.keyCode) && !gameison) {
+//     e.preventDefault();
+//     $("#level-title").text(`Level ${level}`);
+//     var color = buttoncolor[nextSq()];
+//     gamepattern.push(color);
+//     playsound(color);
+//     gameison = true;
+//     //nextLevel();
+//   }
+// });
 
 function playsound(color) {
   if (gameActive) {
